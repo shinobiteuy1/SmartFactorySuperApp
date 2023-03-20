@@ -16,7 +16,7 @@ class FooterBar extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      flex: 4,
+                      flex: 3,
                       child: Container(
                         alignment: Alignment.centerLeft,
                         child: RichText(
@@ -27,7 +27,7 @@ class FooterBar extends StatelessWidget {
                                 textStyle: TextStyle(
                                   color: primaryColor,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.0.sp,
+                                  fontSize: 24.0.sp,
                                 ),
                               ),
                             ),
@@ -37,7 +37,7 @@ class FooterBar extends StatelessWidget {
                                 textStyle: TextStyle(
                                   color: grey,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 15.0.sp,
+                                  fontSize: 20.0.sp,
                                 ),
                               ),
                             ),
