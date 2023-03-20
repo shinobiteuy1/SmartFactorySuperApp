@@ -6,7 +6,7 @@ import '../core/utils/car_status.dart';
 import '../core/utils/footer_bar.dart';
 import '../core/utils/header_page.dart';
 import '../core/utils/list_view.dart';
-import '../core/utils/user_profile.dart';
+import '../core/utils/user_header.dart';
 import '../core/values/colors.dart';
 import '../modules/home/controller.dart';
 
@@ -34,34 +34,11 @@ class HomePage extends StatelessWidget {
                   height: 1,
                   color: lineColor,
                 ),
-                // Column(
-                //   children: [
-                //     Expanded(
-                //       child: ListViewItems()
-                //     ),
-                //   ],
-                // )
-                // Expanded(
-                //   child: ListViewItems()
-                // )
               ],
             ),
           ),
         ],
       ),
     );
-    // return Scaffold(
-    //   body: SizedBox.expand(
-    //     child: Stack(
-    //       children: [
-    //         HeaderPage(),
-    //         UserProFile(),
-    //         CarStatus(),
-    //         FooterBar(),
-    //         //ListViewItems()
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }
