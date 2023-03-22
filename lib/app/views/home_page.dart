@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
-import 'package:smart_factory_suit/app/core/values/colors.dart';
 import '../core/utils/car_status.dart';
 import '../core/utils/footer_bar.dart';
 import '../core/utils/header_page.dart';
@@ -22,12 +21,8 @@ class HomePage extends StatelessWidget {
           Stack(
             children: [
               HeaderPage(),
-              Positioned(
-                child: UserHeader()
-              ),
-              Positioned(
-                child: CarStatus()
-              )
+              UserHeader(),
+              CarStatus()
             ],
           ),
           Container(
@@ -79,11 +74,11 @@ class HomePage extends StatelessWidget {
                   listBuild(context: context, count: 10),
                   const SizedBox(
                     height: 30,
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
