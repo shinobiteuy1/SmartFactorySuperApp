@@ -21,7 +21,7 @@ class User extends StatelessWidget {
           style: GoogleFonts.notoSansThai(
             textStyle: TextStyle(
               color: black,
-              fontSize: 16.0.sp,
+              fontSize: 14.0.sp,
               fontWeight: FontWeight.w600,
             ),
           )
@@ -35,34 +35,56 @@ class User extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 16.0.sp,right: 16.0.sp),
+        padding: EdgeInsets.only(left: 12.0.sp,right: 12.0.sp),
         child: Column(
           children: [
             const SizedBox(
               height: 20,
             ),
-            Container(
-              height: 100.0.sp,
-              width: 100.0.sp,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('lib/Images/user-profile.png')
-                )
-              ),
+            Center(
+              child: Stack(
+                children: [
+                  Container(
+                    height: 80.0.sp,
+                    width: 80.0.sp,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('lib/Images/user-profile.png')
+                      )
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0.0.sp,
+                    right: 0.0.sp,
+                    child: Container(
+                      height: 27.0.sp,
+                      width: 27.0.sp,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryColor
+                      ),
+                      child: const Icon(
+                        Icons.photo_camera_outlined,
+                        color: white,  
+                      ),
+                    )
+                  )
+                ],
+              )
             ),
             const SizedBox(
               height: 20,
             ),
             Container(
-              padding: EdgeInsets.only(left: 16.0.sp),
+              padding: EdgeInsets.only(left: 12.0.sp),
               width: Get.width,
               child: Text('ข้อมูลบัญชีผู้ใช้',
                 style: GoogleFonts.notoSansThai(
                   textStyle: TextStyle(
                     color: black,
-                    fontSize: 18.0.sp,
+                    fontSize: 16.0.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 )
@@ -293,6 +315,7 @@ class User extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: primaryColor,
@@ -306,11 +329,12 @@ class User extends StatelessWidget {
                     ]),
                 width: Get.width, // - 32.0.sp,
                 height: 40.0.sp,
+                //child: TextFont('ออกจากระบบ'),
                 child: Text('ออกจากระบบ',
                   style: GoogleFonts.notoSansThai(
                     textStyle: TextStyle(
-                      color: black,
-                      fontSize: 10.0.sp,
+                      color: white,
+                      fontSize: 12.0.sp,
                       fontWeight: FontWeight.w400,
                     ),
                   )

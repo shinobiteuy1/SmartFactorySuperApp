@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
+import 'package:smart_factory_suit/app/core/values/colors.dart';
+import '../core/utils/car_status.dart';
 import '../core/utils/footer_bar.dart';
 import '../core/utils/header_page.dart';
 import '../core/utils/list_view.dart';
+import '../core/utils/user_header.dart';
 import '../modules/home/controller.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,21 +19,31 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          HeaderPage(),
-          SizedBox(
-            height: 80,
-            width: Get.width,
+          Stack(
+            children: [
+              HeaderPage(),
+              Positioned(
+                child: UserHeader()
+              ),
+              Positioned(
+                child: CarStatus()
+              )
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 12.0.sp,right: 12.0.sp),
+            child: FooterBar()
+          ),
+          const Divider(),
+            const SizedBox(
+            height: 1,
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 16.0.sp, right: 16.0.sp),
+              padding: EdgeInsets.only(left: 12.0.sp, right: 12.0.sp),
               child: ListView(
+                padding: EdgeInsets.zero,
                 children: [
-                  FooterBar(),
-                  Divider(),
-                    SizedBox(
-                    height: 1.0.hp,
-                  ),
                   Container(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -43,12 +56,13 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // ignore: prefer_const_constructors
                   SizedBox(
-                    height: 1.5.hp,
+                    height: 1.5,
                   ),
                   listBuild(context: context, count: 0),
-                  SizedBox(
-                    height: 2.0.hp,
+                  const SizedBox(
+                    height: 2.0,
                   ),
                   Container(
                     alignment: Alignment.topLeft,
@@ -63,6 +77,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   listBuild(context: context, count: 10),
+                  const SizedBox(
+                    height: 30,
+                  )
                 ],
               ),
             ),

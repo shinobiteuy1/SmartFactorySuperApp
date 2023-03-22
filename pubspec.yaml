@@ -43,6 +43,7 @@ dependencies:
   step_progress_indicator: ^1.0.1
   persistent_bottom_nav_bar: ^5.0.2
   google_fonts: ^2.0.0
+  awesome_dialog: ^3.0.2
 
 dev_dependencies:
   flutter_test:

@@ -14,38 +14,46 @@ class HeaderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-            height: 210.0.sp,
-            width: Get.width,
-            // ignore: prefer_const_constructors
-            decoration: BoxDecoration(
+    return Column(
+      children: [
+        Container(
+                height: 210.0.sp,
+                width: Get.width,
                 // ignore: prefer_const_constructors
-                image: DecorationImage(
-              fit: BoxFit.fill,
-              image: const AssetImage('lib/Images/HomepageBG.png'),
-            )),
+                decoration: BoxDecoration(
+                    // ignore: prefer_const_constructors
+                    image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: const AssetImage('lib/Images/HomepageBG.png'),
+                )),
+        ),
+        SizedBox(
+          height: 110,
+          width: Get.width,
+        )
+      ],
     );
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            height: 210.0.sp,
-            width: Get.width,
-            // ignore: prefer_const_constructors
-            decoration: BoxDecoration(
-                // ignore: prefer_const_constructors
-                image: DecorationImage(
-              fit: BoxFit.fill,
-              image: const AssetImage('lib/Images/HomepageBG.png'),
-            )),
-          ),
-          Container(
-            width: Get.width,
-            color: white,
-          )
-        ],
-      ),
-    );
+    // return Container(
+    //   child: Column(
+    //     children: [
+    //       Container(
+    //         height: 210.0.sp,
+    //         width: Get.width,
+    //         // ignore: prefer_const_constructors
+    //         decoration: BoxDecoration(
+    //             // ignore: prefer_const_constructors
+    //             image: DecorationImage(
+    //           fit: BoxFit.fill,
+    //           image: const AssetImage('lib/Images/HomepageBG.png'),
+    //         )),
+    //       ),
+    //       Container(
+    //         width: Get.width,
+    //         color: white,
+    //       )
+    //     ],
+    //   ),
+    // );
     // return Stack(
     //     children: [
     //       Column(
