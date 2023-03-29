@@ -46,6 +46,7 @@ dependencies:
   awesome_dialog: ^3.0.2
   flutter_svg: ^2.0.4
   intl: ^0.18.0
+  aad_oauth: ^0.4.3
 
 dev_dependencies:
   flutter_test:
