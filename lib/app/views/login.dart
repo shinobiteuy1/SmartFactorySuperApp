@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/config/auth_config.dart';
+import 'package:smart_factory_suit/app/core/utils/bottnon_nav_bar.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import 'package:smart_factory_suit/app/views/home_page.dart';
 import 'package:smart_factory_suit/main.dart';
@@ -118,7 +119,7 @@ class Login extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Get.to(
-                  HomePage(),
+                  const BottonVavBar(),
                 );
               },
               child: const Text('Go To Home'),
