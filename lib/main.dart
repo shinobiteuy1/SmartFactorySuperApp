@@ -3,12 +3,16 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 
 import 'app/core/utils/bottnon_nav_bar.dart';
 import 'app/modules/home/binding.dart';
 import 'localization/languages.dart';
 
 void main() {
+  //Intl.defaultLocale = 'th';
+  initializeDateFormatting();
   runApp(const MyApp());
 }
 

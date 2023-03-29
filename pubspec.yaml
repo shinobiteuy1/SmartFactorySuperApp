@@ -44,6 +44,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   google_fonts: ^2.0.0
   awesome_dialog: ^3.0.2
+  flutter_svg: ^2.0.4
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -69,8 +71,12 @@ flutter:
 
   assets:
     - lib/Images/HomepageBG.png
+    - lib/Images/HomepageBG.svg
     - lib/Images/user-profile.png
     - lib/Images/delivery-truck.png
+    - lib/Images/delivery-truck.svg
+    - lib/Images/Truck.svg
+
 
   fonts:
     - family: MyIcons

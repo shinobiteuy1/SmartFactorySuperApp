@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import '../../../Images/Icons/my_icons_icons.dart';
+import '../../data/models/car_card_model.dart';
 import '../values/colors.dart';
 import 'car_status_info.dart';
 
@@ -74,11 +78,19 @@ Widget listBuild({required BuildContext context, required int count}) {
               }),
         );
 }
+// CardCar(){
+//   string PlateNo {get; set;}
+//   string PlateNo {get; set;}
+//   string PlateNo {get; set;}
+//   string PlateNo {get; set;}
+// }
 
-Widget listCarStatusBuild({required BuildContext context, required int count}) {
+Widget listCarStatusBuild({required BuildContext context, required RxList<CarCardModel> list}) {
   double height = 20.0.hp;
-  if (count == 0) height = 7.0.hp;
-  return count == 0
+  print(jsonEncode(list));
+  if (list.isEmpty) height = 7.0.hp;
+  return Obx(
+        () => list.isEmpty
       ? SizedBox(
           height: height,
           child: Material(
@@ -101,9 +113,10 @@ Widget listCarStatusBuild({required BuildContext context, required int count}) {
         )
       : Material(
           child: ListView.builder(
+              padding: EdgeInsets.only(bottom: 20.0.sp),
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: count,
+              itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
                   padding: EdgeInsets.only(left: 12.0.sp, right: 12.0.sp),
@@ -143,7 +156,6 @@ Widget listCarStatusBuild({required BuildContext context, required int count}) {
                           },
                           minLeadingWidth: 20,
                           tileColor: white,
-                          //leading: const Icon(MyIcons.deliver_food,color: primaryColor,),
                           leading: Container(
                               height: 40,
                               width: 40,
@@ -151,35 +163,90 @@ Widget listCarStatusBuild({required BuildContext context, required int count}) {
                                 borderRadius: BorderRadius.circular(7),
                                 color: primaryColorlight,
                               ),
-                              // ignore: prefer_const_constructors
-                              // child: Center(
-                              //   child: const Icon(MyIcons.deliver_food,color: primaryColor,size: 10,),
-                              // ),
                               child: const Icon(
                                 MyIcons.deliver_food,
                                 color: primaryColor,
                                 size: 20,
                               )), //const Icon(MyIcons.deliver_food,color: primaryColor,),
-                          title: Text(
-                            "ทะเบียน : $index",
-                            style: GoogleFonts.notoSansThai(
-                              textStyle: TextStyle(
-                                fontWeight: FontWeight.w300,
-                                fontSize: 12.0.sp,
-                              ),
-                            ),
-                          ),
-                          // ignore: prefer_const_constructors
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "เลข Seal : CPFTH123456",
-                                style: GoogleFonts.notoSansThai(
-                                  textStyle: TextStyle(
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12.0.sp,
-                                  ),
+                              Container(
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '${list[index].labelPlateNoLocal}  ',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: grey,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: '${list[index].plateNo}',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: black,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              ),
+                              Container(
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '${list[index].labelSealNoLocal}  ',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: grey,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: '${list[index].sealNo}',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              ),
+                              Container(
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '${list[index].labelFarmNameLocal}  ',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: grey,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: '${list[index].farmName}',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
                                 ),
                               ),
                               const SizedBox(
@@ -190,18 +257,85 @@ Widget listCarStatusBuild({required BuildContext context, required int count}) {
                                 height: 2,
                               ),
                               const SizedBox(
-                                height: 5,
+                                height: 10,
                               ),
-                              cardStatus(context: context, status: "s")
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: cardStatus(context: context, label: '${list[index].labelStatusCarLocal}'),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 12.0.sp,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
                             ],
                           ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            size: 12.0.sp,
-                          ),
+                          trailing: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Container(
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '${list[index].labelRoundNoLocal}  ',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: grey,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: '${list[index].roundNo}',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              ),
+                              Container(
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: '${list[index].labelPondNoLocal}  ',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: grey,
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: '${list[index].pondNo}',
+                                      style: GoogleFonts.notoSansThai(
+                                        textStyle: TextStyle(
+                                          color: black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10.0.sp,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                              ),
+                            ],
+                          )
                         ),
                       ),
                       const SizedBox(height: 13),
@@ -209,114 +343,43 @@ Widget listCarStatusBuild({required BuildContext context, required int count}) {
                   ),
                 );
               }),
-        );
+        )
+  );
 }
 
-Widget cardStatus({required BuildContext context, required String status}) {
-  if (status.toLowerCase() == "w") {
+Widget cardStatus({required BuildContext context, required String label}) {
     return IntrinsicWidth(
-      child: Container(
-        height: 20.0.sp,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: orangelight,
-        ),
-        child: Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
-              child: Icon(
-                Icons.remove_circle,
-                size: 12.0.sp,
-                color: orangedark,
-              ),
+    child: Container(
+      height: 20.0.sp,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: orangelight,
+      ),
+      child: Row(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
+            child: Icon(
+              Icons.remove_circle,
+              size: 12.0.sp,
+              color: orangedark,
             ),
-            Container(
-              margin: EdgeInsets.only(right: 10.0.sp),
-              child: Text(
-                "รอลงคิว",
-                style: GoogleFonts.notoSansThai(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.0.sp,
-                    color: orangedark,
-                  ),
+          ),
+          Container(
+            margin: EdgeInsets.only(right: 10.0.sp),
+            child: Text(
+              label,
+              style: GoogleFonts.notoSansThai(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.0.sp,
+                  color: orangedark,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-    );
-  } else if (status.toLowerCase() == "s") {
-    return IntrinsicWidth(
-      child: Container(
-        height: 20.0.sp,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: greenlight,
-        ),
-        child: Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
-              child: Icon(
-                Icons.check_circle,
-                size: 12.0.sp,
-                color: greendark,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 10.0.sp),
-              child: Text(
-                "ออกจากโรงงานสำเร็จ",
-                style: GoogleFonts.notoSansThai(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.0.sp,
-                    color: greendark,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  } else {
-    return IntrinsicWidth(
-      child: Container(
-        height: 20.0.sp,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: greenlight,
-        ),
-        child: Row(
-          children: [
-            Container(
-              margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
-              child: Icon(
-                Icons.check_circle,
-                size: 12.0.sp,
-                color: greendark,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(right: 10.0.sp),
-              child: Text(
-                "ออกจากโรงงานสำเร็จ",
-                style: GoogleFonts.notoSansThai(
-                  textStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 11.0.sp,
-                    color: greendark,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }

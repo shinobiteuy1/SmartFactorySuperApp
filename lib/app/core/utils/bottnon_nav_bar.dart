@@ -18,6 +18,7 @@ class BottonVavBar extends StatelessWidget {
      // ignore: no_leading_underscores_for_local_identifiers
      List<Widget> _buildScreens() {
       return [
+       //CarPage(),
        HomePage(),
        CarPage(),
        QRCode(),
@@ -39,7 +40,7 @@ class BottonVavBar extends StatelessWidget {
           icon: const Icon(
             MyIcons.deliver_food,
           ),
-          title: 'สถานะรถ',
+          title: 'ประวัติรถ',
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: secondaryColor,
         ),

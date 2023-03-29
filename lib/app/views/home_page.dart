@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smart_factory_suit/app/controllers/home_page_controller.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
+import 'package:smart_factory_suit/app/data/models/car_card_model.dart';
+import '../controllers/car_card_controller.dart';
 import '../core/utils/car_status.dart';
 import '../core/utils/footer_bar.dart';
 import '../core/utils/header_page.dart';
@@ -12,72 +15,51 @@ import '../modules/home/controller.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final homeCtrl = Get.find<HomeController>();
+  final CarCardController carCardController = Get.find();
+  final HomePageController homePageController = Get.find();
+
+
+  //carCardController.carCard.assign(item);
+  //carCardController.
+  //var items = new <CarCardModel>();
+  //items.assign();
 
   @override
   Widget build(BuildContext context) {
+    //carCardController.getListCar(context: context);
+    carCardController.addListCar(context: context);
+    homePageController.addHomePage(context: context);
     return Scaffold(
       body: Column(
         children: [
           Stack(
             children: [
               HeaderPage(),
-              UserHeader(),
-              CarStatus()
+              boxUserStatus(context: context,
+                            name: homePageController.homePageItem[0].name.toString(),
+                            positionName: homePageController.homePageItem[0].position.toString(),
+                            labelPositionName: homePageController.homePageItem[0].labelPositionLocal.toString(),
+                            factoryName: homePageController.homePageItem[0].factoryName.toString() ,
+                            labelFactoryName: homePageController.homePageItem[0].labelFactoryNameLocal.toString()),
+
+              boxCarStatus( context: context,
+                            labelTopBox: homePageController.homePageItem[0].labelTopBoxLocal.toString(),
+                            dataTopBox: homePageController.homePageItem[0].topBox.toString(),
+                            labelBottomBox: homePageController.homePageItem[0].labelBottonBoxLocal.toString(),
+                            dataBottomBox: homePageController.homePageItem[0].bottonBox.toString())
             ],
           ),
           Container(
-            padding: EdgeInsets.only(left: 12.0.sp,right: 12.0.sp),
-            child: FooterBar()
-          ),
-          const Divider(),
-            const SizedBox(
-            height: 1,
+            padding: EdgeInsets.only(left: 12.0.sp,right: 12.0.sp,top: 5.0.sp),
+            child: headerListCard(context: context,numberOfList: carCardController.carCard.length)
           ),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 12.0.sp, right: 12.0.sp),
-              child: ListView(
-                padding: EdgeInsets.zero,
+            child: ListView(
+                padding: EdgeInsets.only(top: 5.0.sp),
                 children: [
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "รถกำลังเข้าโรงงาน",
-                      style: GoogleFonts.notoSansThai(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18.0.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                  // ignore: prefer_const_constructors
-                  SizedBox(
-                    height: 1.5,
-                  ),
-                  listBuild(context: context, count: 0),
-                  const SizedBox(
-                    height: 2.0,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "รถกำลังออกโรงงาน",
-                      style: GoogleFonts.notoSansThai(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18.0.sp,
-                        ),
-                      ),
-                    ),
-                  ),
-                  listBuild(context: context, count: 10),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  listCarStatusBuild(context: context,list: carCardController.carCard)
                 ],
               ),
-            ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import 'package:smart_factory_suit/app/core/values/colors.dart';
@@ -19,13 +20,10 @@ class HeaderPage extends StatelessWidget {
         Container(
                 height: 210.0.sp,
                 width: Get.width,
-                // ignore: prefer_const_constructors
-                decoration: BoxDecoration(
-                    // ignore: prefer_const_constructors
-                    image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: const AssetImage('lib/Images/HomepageBG.png'),
-                )),
+                child: SvgPicture.asset(
+                    'lib/Images/HomepageBG.svg',
+                    fit: BoxFit.fill,
+                  ),
         ),
         SizedBox(
           height: 110,
@@ -33,45 +31,5 @@ class HeaderPage extends StatelessWidget {
         )
       ],
     );
-    // return Container(
-    //   child: Column(
-    //     children: [
-    //       Container(
-    //         height: 210.0.sp,
-    //         width: Get.width,
-    //         // ignore: prefer_const_constructors
-    //         decoration: BoxDecoration(
-    //             // ignore: prefer_const_constructors
-    //             image: DecorationImage(
-    //           fit: BoxFit.fill,
-    //           image: const AssetImage('lib/Images/HomepageBG.png'),
-    //         )),
-    //       ),
-    //       Container(
-    //         width: Get.width,
-    //         color: white,
-    //       )
-    //     ],
-    //   ),
-    // );
-    // return Stack(
-    //     children: [
-    //       Column(
-    //         children: [
-    //           Container(
-    //             height: Get.height / 3,
-    //             width: Get.width,
-    //             // ignore: prefer_const_constructors
-    //             decoration: BoxDecoration(
-    //                 // ignore: prefer_const_constructors
-    //                 image: DecorationImage(
-    //               fit: BoxFit.fill,
-    //               image: const AssetImage('lib/Images/HomepageBG.png'),
-    //             )),
-    //           )
-    //         ],
-    //       )
-    //     ],
-    //   );
   }
 }
