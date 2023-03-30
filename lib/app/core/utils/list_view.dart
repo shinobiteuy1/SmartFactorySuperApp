@@ -85,12 +85,12 @@ Widget listBuild({required BuildContext context, required int count}) {
 //   string PlateNo {get; set;}
 // }
 
-Widget listCarStatusBuild({required BuildContext context, required RxList<CarCardModel> list}) {
+Widget listCarStatusBuild(
+    {required BuildContext context, required RxList<CarCardModel> list}) {
   double height = 20.0.hp;
   print(jsonEncode(list));
   if (list.isEmpty) height = 7.0.hp;
-  return Obx(
-        () => list.isEmpty
+  return Obx(() => list.isEmpty
       ? SizedBox(
           height: height,
           child: Material(
@@ -135,6 +135,291 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                               )
                             ]),
                         child: ListTile(
+                            onTap: () {
+                              AwesomeDialog(
+                                context: context,
+                                dialogType: DialogType.info,
+                                animType: AnimType.rightSlide,
+                                title: 'ทะเบียนรถ : $index',
+                                desc: 'เลข Seal : CPFTH123456',
+                                btnCancelOnPress: () {},
+                                btnOkOnPress: () {
+                                  //Get.to(carStatusInfo(context,"ทะเบียนรถ : $index"));
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => carStatusInfo(
+                                            context, "ทะเบียนรถ : $index")),
+                                  );
+                                },
+                              ).show();
+                            },
+                            minLeadingWidth: 20,
+                            tileColor: white,
+                            leading: Container(
+                                height: 40,
+                                width: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(7),
+                                  color: primaryColorlight,
+                                ),
+                                child: const Icon(
+                                  MyIcons.deliver_food,
+                                  color: primaryColor,
+                                  size: 20,
+                                )), //const Icon(MyIcons.deliver_food,color: primaryColor,),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text:
+                                            '${list[index].labelPlateNoLocal}  ',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: grey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: '${list[index].plateNo}',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                                Container(
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text:
+                                            '${list[index].labelSealNoLocal}  ',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: grey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: '${list[index].sealNo}',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                                Container(
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text:
+                                            '${list[index].labelFarmNameLocal}  ',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: grey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: '${list[index].farmName}',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Divider(
+                                  color: black,
+                                  height: 2,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      child: cardStatus(
+                                          context: context,
+                                          label:
+                                              '${list[index].labelStatusCarLocal}'),
+                                    ),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 12.0.sp,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                              ],
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                            trailing: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Container(
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text:
+                                            '${list[index].labelRoundNoLocal}  ',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: grey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: '${list[index].roundNo}',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                                Container(
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                        text:
+                                            '${list[index].labelPondNoLocal}  ',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: grey,
+                                            fontWeight: FontWeight.w300,
+                                            fontSize: 12.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: '${list[index].pondNo}',
+                                        style: GoogleFonts.notoSansThai(
+                                          textStyle: TextStyle(
+                                            color: black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 10.0.sp,
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                              ],
+                            )),
+                      ),
+                      const SizedBox(height: 13),
+                    ],
+                  ),
+                );
+              }),
+        ));
+}
+
+Widget cardStatus({required BuildContext context, required String label}) {
+  return IntrinsicWidth(
+    child: Container(
+      height: 20.0.sp,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: orangelight,
+      ),
+      child: Row(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
+            child: Icon(
+              Icons.remove_circle,
+              size: 12.0.sp,
+              color: orangedark,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(right: 10.0.sp),
+            child: Text(
+              label,
+              style: GoogleFonts.notoSansThai(
+                textStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 11.0.sp,
+                  color: orangedark,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget confirmCard(
+    {required BuildContext context, required RxList<CarCardModel> list}) {
+  return Obx(() => Material(
+        child: ListView.builder(
+            padding: EdgeInsets.only(bottom: 20.0.sp),
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 5.0,
+                        spreadRadius: 1.0,
+                        offset: Offset(0.0.sp, 0.0.sp),
+                      )
+                    ]),
+                //padding: EdgeInsets.only(left: 12.0.sp, right: 12.0.sp),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 10.0.sp,
+                    ),
+                    Container(
+                      child: ListTile(
                           onTap: () {
                             AwesomeDialog(
                               context: context,
@@ -175,7 +460,8 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                                 child: RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
-                                      text: '${list[index].labelPlateNoLocal}  ',
+                                      text:
+                                          '${list[index].labelPlateNoLocal}  ',
                                       style: GoogleFonts.notoSansThai(
                                         textStyle: TextStyle(
                                           color: grey,
@@ -227,7 +513,8 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                                 child: RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
-                                      text: '${list[index].labelFarmNameLocal}  ',
+                                      text:
+                                          '${list[index].labelFarmNameLocal}  ',
                                       style: GoogleFonts.notoSansThai(
                                         textStyle: TextStyle(
                                           color: grey,
@@ -252,25 +539,6 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                               const SizedBox(
                                 height: 5,
                               ),
-                              const Divider(
-                                color: black,
-                                height: 2,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: cardStatus(context: context, label: '${list[index].labelStatusCarLocal}'),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 12.0.sp,
-                                  ),
-                                ],
-                              ),
                               const SizedBox(
                                 height: 8,
                               ),
@@ -286,7 +554,8 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                                 child: RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
-                                      text: '${list[index].labelRoundNoLocal}  ',
+                                      text:
+                                          '${list[index].labelRoundNoLocal}  ',
                                       style: GoogleFonts.notoSansThai(
                                         textStyle: TextStyle(
                                           color: grey,
@@ -335,51 +604,45 @@ Widget listCarStatusBuild({required BuildContext context, required RxList<CarCar
                                 ),
                               ),
                             ],
-                          )
-                        ),
+                          )),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 12.0.sp, left: 12.0.sp),
+                      child: const Divider(
+                        color: black,
+                        height: 2,
                       ),
-                      const SizedBox(height: 13),
-                    ],
-                  ),
-                );
-              }),
-        )
-  );
-}
-
-Widget cardStatus({required BuildContext context, required String label}) {
-    return IntrinsicWidth(
-    child: Container(
-      height: 20.0.sp,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: orangelight,
-      ),
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 10.0.sp, right: 5.0.sp),
-            child: Icon(
-              Icons.remove_circle,
-              size: 12.0.sp,
-              color: orangedark,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 10.0.sp),
-            child: Text(
-              label,
-              style: GoogleFonts.notoSansThai(
-                textStyle: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 11.0.sp,
-                  color: orangedark,
+                    ),
+                    SizedBox(
+                      height: 2.0.sp,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 12.0.sp, left: 12.0.sp),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                              //child: cardStatus(context: context, label: '${list[index].labelStatusCarLocal}'),
+                              ),
+                          Text(
+                            "ดูสถานะรถ",
+                            style: GoogleFonts.notoSansThai(
+                              textStyle: TextStyle(
+                                color: primaryColor,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.0.sp,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12.0.sp,
+                    ),
+                  ],
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
+              );
+            }),
+      ));
 }

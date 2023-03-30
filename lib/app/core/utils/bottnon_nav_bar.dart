@@ -18,11 +18,11 @@ class BottonVavBar extends StatelessWidget {
      // ignore: no_leading_underscores_for_local_identifiers
      List<Widget> _buildScreens() {
       return [
-       //CarPage(),
+      NotificationPage(),
        HomePage(),
        CarPage(),
        QRCode(),
-       NotificationPage(),
+       //NotificationPage(),
        User(),
       ];
      }
@@ -36,7 +36,7 @@ class BottonVavBar extends StatelessWidget {
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: secondaryColor,
         ),
-                PersistentBottomNavBarItem(
+        PersistentBottomNavBarItem(
           icon: const Icon(
             MyIcons.deliver_food,
           ),
@@ -44,7 +44,7 @@ class BottonVavBar extends StatelessWidget {
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: secondaryColor,
         ),
-                PersistentBottomNavBarItem(
+        PersistentBottomNavBarItem(
           icon: const Icon(
             MyIcons.qrcode,
             color: white,
@@ -53,7 +53,7 @@ class BottonVavBar extends StatelessWidget {
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: secondaryColor,
         ),
-                PersistentBottomNavBarItem(
+        PersistentBottomNavBarItem(
           icon: const Icon(
             MyIcons.notification
           ),
@@ -61,7 +61,7 @@ class BottonVavBar extends StatelessWidget {
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: secondaryColor,
         ),
-                PersistentBottomNavBarItem(
+        PersistentBottomNavBarItem(
           icon: const Icon(
             MyIcons.user
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/utils/qr_scan_page.dart';
 import '../core/values/colors.dart';
 
 class QRCode extends StatelessWidget {
@@ -7,17 +8,18 @@ class QRCode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: yellow,
-      body: Center(
-        child: Text(
-          'QRCode',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 12.0,
-          ),
-        ),
-      ),
-    );
+    return QRScanPage();
+    // return const Scaffold(
+    //   backgroundColor: yellow,
+    //   body: Center(
+    //     child: Text(
+    //       'QRCode',
+    //       style: TextStyle(
+    //         fontWeight: FontWeight.bold,
+    //         fontSize: 12.0,
+    //       ),
+    //     ),
+    //   ),
+    // );
   }
 }

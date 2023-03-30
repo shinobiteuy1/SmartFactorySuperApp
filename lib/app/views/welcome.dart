@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import 'package:smart_factory_suit/app/core/values/colors.dart';
+import 'package:smart_factory_suit/app/views/comfirm_car.dart';
 import 'package:smart_factory_suit/app/views/login.dart';
 
 class Welcome extends StatelessWidget {
@@ -13,7 +14,12 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 2000), () {
       Get.to(
-        Login(),
+        ConfirmCar(),
+        arguments: {
+         "label_page_header" : "เข้าโรงงาน",
+         "factory_name" : "โรงงานกุ้งระโนด"
+        },
+        //Login(),
         transition: Transition.noTransition,
       );
     });

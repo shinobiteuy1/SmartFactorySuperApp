@@ -5,7 +5,9 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:smart_factory_suit/app/views/home_page.dart';
 import 'package:smart_factory_suit/app/views/login.dart';
 import 'package:smart_factory_suit/app/views/welcome.dart';
+import 'app/core/utils/bottnon_nav_bar.dart';
 import 'app/modules/home/binding.dart';
+import 'app/views/comfirm_car.dart';
 import 'localization/languages.dart';
 
 void main() {
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Todo List using GetX',
+      //home: ConfirmCar(),
       home: const Welcome(),
       initialBinding: HomeBinding(),
       builder: EasyLoading.init(),
