@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
-
-import '../controllers/car_card_controller.dart';
+import 'package:smart_factory_suit/app/views/qr_code.dart';
 import '../controllers/confirm_car_controller.dart';
-import '../core/utils/footer_bar.dart';
 import '../core/utils/list_view.dart';
 import '../core/utils/text_form.dart';
 import '../core/values/colors.dart';
@@ -58,7 +56,9 @@ class ConfirmCar extends StatelessWidget {
             Icons.arrow_back_ios,
             color: grey,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.off(const QRCode());
+          },
         ),
       ),
       body: Container(

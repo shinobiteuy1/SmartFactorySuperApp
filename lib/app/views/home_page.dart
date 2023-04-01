@@ -27,8 +27,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //carCardController.getListCar(context: context);
-    carCardController.addListCar(context: context);
-    homePageController.addHomePage(context: context);
+    // carCardController.addListCar();
+    // homePageController.addHomePage();
     return Scaffold(
       body: Column(
         children: [

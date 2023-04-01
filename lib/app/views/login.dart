@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/config/auth_config.dart';
+import 'package:smart_factory_suit/app/controllers/car_card_controller.dart';
+import 'package:smart_factory_suit/app/controllers/home_page_controller.dart';
 import 'package:smart_factory_suit/app/core/utils/bottnon_nav_bar.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
-import 'package:smart_factory_suit/app/views/home_page.dart';
 import 'package:smart_factory_suit/main.dart';
 import '../core/values/colors.dart';
 import 'package:aad_oauth/aad_oauth.dart';
@@ -12,6 +13,8 @@ import 'package:aad_oauth/model/config.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
+  final CarCardController carCardController = Get.find();
+  final HomePageController homePageController = Get.find();
    static final Config config = Config(
        tenant: tenant,
        clientId: clientId,
@@ -118,6 +121,8 @@ class Login extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
+                carCardController.addListCar();
+                homePageController.addHomePage();
                 Get.to(
                   const BottonVavBar(),
                 );

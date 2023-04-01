@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../Images/Icons/my_icons_icons.dart';
@@ -18,10 +19,10 @@ class BottonVavBar extends StatelessWidget {
      // ignore: no_leading_underscores_for_local_identifiers
      List<Widget> _buildScreens() {
       return [
-      NotificationPage(),
+      const NotificationPage(),
        HomePage(),
-       CarPage(),
-       QRCode(),
+       const CarPage(),
+       const QRCode(),
        //NotificationPage(),
        User(),
       ];
@@ -45,6 +46,9 @@ class BottonVavBar extends StatelessWidget {
           inactiveColorPrimary: secondaryColor,
         ),
         PersistentBottomNavBarItem(
+          onPressed: (p0) {
+            Get.to(const QRCode());
+          },
           icon: const Icon(
             MyIcons.qrcode,
             color: white,

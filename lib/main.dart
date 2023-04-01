@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:smart_factory_suit/app/views/home_page.dart';
-import 'package:smart_factory_suit/app/views/login.dart';
 import 'package:smart_factory_suit/app/views/welcome.dart';
-import 'app/core/utils/bottnon_nav_bar.dart';
 import 'app/modules/home/binding.dart';
-import 'app/views/comfirm_car.dart';
 import 'localization/languages.dart';
 
 void main() {
@@ -23,6 +20,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode (SystemUiMode.manual, overlays: []);
     return GetMaterialApp(
       title: 'Todo List using GetX',
       //home: ConfirmCar(),

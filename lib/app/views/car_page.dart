@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import '../core/utils/car_history_header.dart';
-import '../core/utils/list_view.dart';
 import '../core/values/colors.dart';
 
 class CarPage extends StatelessWidget {

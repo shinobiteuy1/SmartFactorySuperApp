@@ -7,8 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import 'package:smart_factory_suit/app/core/values/colors.dart';
 
-import '../../../Images/Icons/my_icons_icons.dart';
-
 Widget boxCarStatus({required BuildContext context,}){
   return Container(
     decoration: BoxDecoration(
