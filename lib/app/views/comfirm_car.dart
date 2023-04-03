@@ -72,10 +72,15 @@ class ConfirmCar extends StatelessWidget {
             SizedBox(
               height: 10.0.sp,
             ),
-            bottonView(context: context)
+            bottonView(context: context),
+            SizedBox(
+              height: 10.0.sp,
+            ),
+            //bottonConfirmCar(context: context,labelButton: 'เข้าโรงงาน')
           ],
         ),
-      )
+      ),
+      bottomSheet: bottonConfirmCar(context: context,labelButton: 'เข้าโรงงาน'),
     );
   }
 }

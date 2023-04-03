@@ -19,11 +19,11 @@ class BottonVavBar extends StatelessWidget {
      // ignore: no_leading_underscores_for_local_identifiers
      List<Widget> _buildScreens() {
       return [
-      const NotificationPage(),
+      //const NotificationPage(),
        HomePage(),
        const CarPage(),
        const QRCode(),
-       //NotificationPage(),
+       const NotificationPage(),
        User(),
       ];
      }
