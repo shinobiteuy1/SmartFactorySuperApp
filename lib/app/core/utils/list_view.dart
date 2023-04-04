@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:smart_factory_suit/app/core/utils/extensions.dart';
 import '../../../Images/Icons/my_icons_icons.dart';
 import '../../data/models/car_card_model.dart';
+import '../../data/models/home_page_model.dart';
 import '../values/colors.dart';
 import 'car_status_info.dart';
 
@@ -86,7 +87,8 @@ Widget listBuild({required BuildContext context, required int count}) {
 // }
 
 Widget listCarStatusBuild(
-    {required BuildContext context, required RxList<CarCardModel> list}) {
+    //{required BuildContext context, required RxList<CarCardModel> list}) {
+    {required BuildContext context, required List<CardList> list}) {
   double height = 20.0.hp;
   print(jsonEncode(list));
   if (list.isEmpty) height = 7.0.hp;
@@ -176,7 +178,7 @@ Widget listCarStatusBuild(
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text:
-                                            '${list[index].labelPlateNoLocal}  ',
+                                            'license_plate '.tr,
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: grey,
@@ -186,7 +188,7 @@ Widget listCarStatusBuild(
                                         ),
                                       ),
                                       TextSpan(
-                                        text: '${list[index].plateNo}',
+                                        text: '${list[index].licensePlate}',
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: black,
@@ -203,7 +205,7 @@ Widget listCarStatusBuild(
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text:
-                                            '${list[index].labelSealNoLocal}  ',
+                                            'seal_no '.tr,
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: grey,
@@ -230,7 +232,7 @@ Widget listCarStatusBuild(
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text:
-                                            '${list[index].labelFarmNameLocal}  ',
+                                            'farm_name '.tr,
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: grey,
@@ -240,7 +242,7 @@ Widget listCarStatusBuild(
                                         ),
                                       ),
                                       TextSpan(
-                                        text: '${list[index].farmName}',
+                                        text: '${list[index].farmNameLoc}',
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: black,
@@ -270,7 +272,7 @@ Widget listCarStatusBuild(
                                       child: cardStatus(
                                           context: context,
                                           label:
-                                              '${list[index].labelStatusCarLocal}'),
+                                              '${list[index].currentStatusName}'),
                                     ),
                                     Icon(
                                       Icons.arrow_forward_ios,
@@ -294,7 +296,7 @@ Widget listCarStatusBuild(
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text:
-                                            '${list[index].labelRoundNoLocal}  ',
+                                            'round_no '.tr,
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: grey,
@@ -321,7 +323,7 @@ Widget listCarStatusBuild(
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text:
-                                            '${list[index].labelPondNoLocal}  ',
+                                            'pond_no '.tr,
                                         style: GoogleFonts.notoSansThai(
                                           textStyle: TextStyle(
                                             color: grey,
@@ -404,6 +406,9 @@ Widget confirmCard(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: white,
+                    border: Border(
+                      
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.shade300,
@@ -411,7 +416,8 @@ Widget confirmCard(
                         spreadRadius: 1.0,
                         offset: Offset(0.0.sp, 0.0.sp),
                       )
-                    ]),
+                    ]
+                  ),
                 //padding: EdgeInsets.only(left: 12.0.sp, right: 12.0.sp),
                 child: Column(
                   children: [

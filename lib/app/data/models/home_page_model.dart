@@ -11,63 +11,147 @@ String homePageModelToJson(HomePageModel data) => json.encode(data.toJson());
 class HomePageModel {
     HomePageModel({
         this.name,
-        this.labelPositionLocal,
-        this.labelPositionEng,
-        this.position,
-        this.labelFactoryNameLocal,
-        this.labelFactoryNameEng,
+        this.positionName,
         this.factoryName,
-        this.labelTopBoxLocal,
-        this.labelTopBoxEng,
-        this.topBox,
-        this.labelBottonBoxLocal,
-        this.labelBottonBoxEng,
-        this.bottonBox,
+        this.labelTopBox,
+        this.dateTopBox,
+        this.labelBottomBox,
+        this.dateBottomBox,
+        this.templateImage,
+        this.cardList,
     });
 
     String? name;
-    String? labelPositionLocal;
-    String? labelPositionEng;
-    String? position;
-    String? labelFactoryNameLocal;
-    String? labelFactoryNameEng;
+    String? positionName;
     String? factoryName;
-    String? labelTopBoxLocal;
-    String? labelTopBoxEng;
-    String? topBox;
-    String? labelBottonBoxLocal;
-    String? labelBottonBoxEng;
-    String? bottonBox;
+    String? labelTopBox;
+    int? dateTopBox;
+    String? labelBottomBox;
+    int? dateBottomBox;
+    String? templateImage;
+    List<CardList>? cardList;
 
     factory HomePageModel.fromJson(Map<String, dynamic> json) => HomePageModel(
         name: json["name"],
-        labelPositionLocal: json["label_position_local"],
-        labelPositionEng: json["label_position_eng"],
-        position: json["position"],
-        labelFactoryNameLocal: json["label_factory_name_local"],
-        labelFactoryNameEng: json["label_factory_name_eng"],
-        factoryName: json["factory_name"],
-        labelTopBoxLocal: json["label_top_box_local"],
-        labelTopBoxEng: json["label_top_box_eng"],
-        topBox: json["top_box"],
-        labelBottonBoxLocal: json["label_botton_box_local"],
-        labelBottonBoxEng: json["label_botton_box_eng"],
-        bottonBox: json["botton_box"],
+        positionName: json["positionName"],
+        factoryName: json["factoryName"],
+        labelTopBox: json["labelTopBox"],
+        dateTopBox: json["dateTopBox"],
+        labelBottomBox: json["labelBottomBox"],
+        dateBottomBox: json["dateBottomBox"],
+        templateImage: json["templateImage"],
+        cardList: json["cardList"] == null ? [] : List<CardList>.from(json["cardList"]!.map((x) => CardList.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "name": name,
-        "label_position_local": labelPositionLocal,
-        "label_position_eng": labelPositionEng,
-        "position": position,
-        "label_factory_name_local": labelFactoryNameLocal,
-        "label_factory_name_eng": labelFactoryNameEng,
-        "factory_name": factoryName,
-        "label_top_box_local": labelTopBoxLocal,
-        "label_top_box_eng": labelTopBoxEng,
-        "top_box": topBox,
-        "label_botton_box_local": labelBottonBoxLocal,
-        "label_botton_box_eng": labelBottonBoxEng,
-        "botton_box": bottonBox,
+        "positionName": positionName,
+        "factoryName": factoryName,
+        "labelTopBox": labelTopBox,
+        "dateTopBox": dateTopBox,
+        "labelBottomBox": labelBottomBox,
+        "dateBottomBox": dateBottomBox,
+        "templateImage": templateImage,
+        "cardList": cardList == null ? [] : List<dynamic>.from(cardList!.map((x) => x.toJson())),
+    };
+}
+
+class CardList {
+    CardList({
+        this.checkPointId,
+        this.transactionDate,
+        this.routeId,
+        this.nextRouteId,
+        this.farmCode,
+        this.farmNameLoc,
+        this.farmNameEng,
+        this.pondNo,
+        this.roundNo,
+        this.licensePlate,
+        this.sealNo,
+        this.sealStatus,
+        this.currentStatusId,
+        this.currentStatusName,
+        this.nextStatusId,
+        this.nextStatusName,
+        this.updateTimestamp,
+        this.status,
+        this.createdUserId,
+        this.createdDate,
+        this.lastUpdatedUserId,
+        this.lastUpdatedDate,
+    });
+
+    String? checkPointId;
+    DateTime? transactionDate;
+    String? routeId;
+    String? nextRouteId;
+    String? farmCode;
+    String? farmNameLoc;
+    String? farmNameEng;
+    String? pondNo;
+    int? roundNo;
+    String? licensePlate;
+    String? sealNo;
+    bool? sealStatus;
+    String? currentStatusId;
+    String? currentStatusName;
+    String? nextStatusId;
+    String? nextStatusName;
+    dynamic updateTimestamp;
+    bool? status;
+    String? createdUserId;
+    DateTime? createdDate;
+    String? lastUpdatedUserId;
+    dynamic lastUpdatedDate;
+
+    factory CardList.fromJson(Map<String, dynamic> json) => CardList(
+        checkPointId: json["checkPointId"],
+        transactionDate: json["transactionDate"] == null ? null : DateTime.parse(json["transactionDate"]),
+        routeId: json["routeId"],
+        nextRouteId: json["nextRouteId"],
+        farmCode: json["farmCode"],
+        farmNameLoc: json["farmNameLoc"],
+        farmNameEng: json["farmNameEng"],
+        pondNo: json["pondNo"],
+        roundNo: json["roundNo"],
+        licensePlate: json["licensePlate"],
+        sealNo: json["sealNo"],
+        sealStatus: json["sealStatus"],
+        currentStatusId: json["currentStatusId"],
+        currentStatusName: json["currentStatusName"],
+        nextStatusId: json["nextStatusId"],
+        nextStatusName: json["nextStatusName"],
+        updateTimestamp: json["updateTimestamp"],
+        status: json["status"],
+        createdUserId: json["createdUserId"],
+        createdDate: json["createdDate"] == null ? null : DateTime.parse(json["createdDate"]),
+        lastUpdatedUserId: json["lastUpdatedUserId"],
+        lastUpdatedDate: json["lastUpdatedDate"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "checkPointId": checkPointId,
+        "transactionDate": "${transactionDate!.year.toString().padLeft(4, '0')}-${transactionDate!.month.toString().padLeft(2, '0')}-${transactionDate!.day.toString().padLeft(2, '0')}",
+        "routeId": routeId,
+        "nextRouteId": nextRouteId,
+        "farmCode": farmCode,
+        "farmNameLoc": farmNameLoc,
+        "farmNameEng": farmNameEng,
+        "pondNo": pondNo,
+        "roundNo": roundNo,
+        "licensePlate": licensePlate,
+        "sealNo": sealNo,
+        "sealStatus": sealStatus,
+        "currentStatusId": currentStatusId,
+        "currentStatusName": currentStatusName,
+        "nextStatusId": nextStatusId,
+        "nextStatusName": nextStatusName,
+        "updateTimestamp": updateTimestamp,
+        "status": status,
+        "createdUserId": createdUserId,
+        "createdDate": createdDate?.toIso8601String(),
+        "lastUpdatedUserId": lastUpdatedUserId,
+        "lastUpdatedDate": lastUpdatedDate,
     };
 }

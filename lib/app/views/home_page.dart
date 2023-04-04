@@ -28,7 +28,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     //carCardController.getListCar(context: context);
     // carCardController.addListCar();
-    // homePageController.addHomePage();
+    homePageController.getHomePage(context: context);
+    //homePageController.getHomePageTest();
+
     return Scaffold(
       body: Column(
         children: [
@@ -37,27 +39,27 @@ class HomePage extends StatelessWidget {
               HeaderPage(),
               boxUserStatus(context: context,
                             name: homePageController.homePageItem[0].name.toString(),
-                            positionName: homePageController.homePageItem[0].position.toString(),
-                            labelPositionName: homePageController.homePageItem[0].labelPositionLocal.toString(),
+                            positionName: homePageController.homePageItem[0].positionName.toString(),
+                            labelPositionName: 'หน้าที่',
                             factoryName: homePageController.homePageItem[0].factoryName.toString() ,
-                            labelFactoryName: homePageController.homePageItem[0].labelFactoryNameLocal.toString()),
+                            labelFactoryName: 'โรงงาน'),
 
               boxCarStatus( context: context,
-                            labelTopBox: homePageController.homePageItem[0].labelTopBoxLocal.toString(),
-                            dataTopBox: homePageController.homePageItem[0].topBox.toString(),
-                            labelBottomBox: homePageController.homePageItem[0].labelBottonBoxLocal.toString(),
-                            dataBottomBox: homePageController.homePageItem[0].bottonBox.toString())
+                            labelTopBox: homePageController.homePageItem[0].labelTopBox.toString(),
+                            dataTopBox: homePageController.homePageItem[0].dateTopBox.toString(),
+                            labelBottomBox: homePageController.homePageItem[0].labelBottomBox.toString(),
+                            dataBottomBox: homePageController.homePageItem[0].dateBottomBox.toString())
             ],
           ),
           Container(
             padding: EdgeInsets.only(left: 12.0.sp,right: 12.0.sp,top: 5.0.sp),
-            child: headerListCard(context: context,numberOfList: carCardController.carCard.length)
+            child: headerListCard(context: context,numberOfList: homePageController.homePageItem[0].cardList!.length)
           ),
           Expanded(
             child: ListView(
                 padding: EdgeInsets.only(top: 5.0.sp),
                 children: [
-                  listCarStatusBuild(context: context,list: carCardController.carCard)
+                  listCarStatusBuild(context: context,list:  homePageController.homePageItem[0].cardList!)
                 ],
               ),
           ),

@@ -15,12 +15,12 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 2000), () {
       Get.to(
-        ConfirmCar(),
-        arguments: {
-         "label_page_header" : "เข้าโรงงาน",
-         "factory_name" : "โรงงานกุ้งระโนด"
-        },
-        //Login(),
+        // ConfirmCar(),
+        // arguments: {
+        //  "label_page_header" : "เข้าโรงงาน",
+        //  "factory_name" : "โรงงานกุ้งระโนด"
+        // },
+        Login(),
         transition: Transition.noTransition,
       );
     });

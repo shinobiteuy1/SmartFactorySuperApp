@@ -28,36 +28,92 @@ Widget textFormView({required BuildContext context}) {
           SizedBox(
             height: 5.0.sp,
           ),
-          const TextField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                borderSide: BorderSide(width: 1, color: greyligColor),
-              ),
-              hintText: 'ฟาร์ม',
-            ),
-          ),
-          Text(
-            "เลขบ่อ",
-            style: GoogleFonts.notoSansThai(
-              textStyle: TextStyle(
-                color: black,
-                fontWeight: FontWeight.w400,
-                fontSize: 12.0.sp,
-              ),
-            ),
-          ),
           SizedBox(
-            height: 5.0.sp,
-          ),
-          const TextField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                borderSide: BorderSide(width: 1, color: greyligColor),
+            height: 50.0.sp,
+            child: const TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  borderSide: BorderSide(width: 1, color: greyligColor),
+                ),
+                hintText: 'ฟาร์ม',
               ),
-              hintText: '',
             ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "เลขบ่อ",
+                      style: GoogleFonts.notoSansThai(
+                        textStyle: TextStyle(
+                          color: black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.0.sp,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0.sp,
+                    ),
+                    SizedBox(
+                      height: 50.0.sp,
+                      //width: 135.0.sp,
+                      child: const TextField(
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(width: 1, color: greyligColor),
+                          ),
+                          hintText: 'เลขบ่อ',
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 12.0.sp,
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "เที่ยว",
+                      style: GoogleFonts.notoSansThai(
+                        textStyle: TextStyle(
+                          color: black,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.0.sp,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0.sp,
+                    ),
+                    SizedBox(
+                      height: 50.0.sp,
+                      //width: 135.0.sp,
+                      child: const TextField(
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(width: 1, color: greyligColor),
+                          ),
+                          hintText: 'เที่ยว',
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
           Text(
             "เลข Seal",
@@ -72,13 +128,16 @@ Widget textFormView({required BuildContext context}) {
           SizedBox(
             height: 5.0.sp,
           ),
-          const TextField(
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                borderSide: BorderSide(width: 1, color: greyligColor),
+          SizedBox(
+            height: 50.0.sp,
+            child: const TextField(
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  borderSide: BorderSide(width: 1, color: greyligColor),
+                ),
+                hintText: 'เลข Seal',
               ),
-              hintText: 'เลข Seal',
             ),
           ),
         ],
