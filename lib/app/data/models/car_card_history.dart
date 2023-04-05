@@ -4,86 +4,106 @@
 
 import 'dart:convert';
 
-CarCardHistoryModel carCardHistoryModelFromJson(String str) => CarCardHistoryModel.fromJson(json.decode(str));
+List<CarCardHistoryModel> carCardHistoryModelFromJson(String str) => List<CarCardHistoryModel>.from(json.decode(str).map((x) => CarCardHistoryModel.fromJson(x)));
 
-String carCardHistoryModelToJson(CarCardHistoryModel data) => json.encode(data.toJson());
+String carCardHistoryModelToJson(List<CarCardHistoryModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CarCardHistoryModel {
     CarCardHistoryModel({
-        this.labelPlateNoLocal,
-        this.labelPlateNoEng,
-        this.plateNo,
-        this.labelSealNoLocal,
-        this.labelSealNoEng,
-        this.sealNo,
-        this.labelFarmNameLocal,
-        this.labelFarmNameEng,
-        this.farmName,
-        this.labelRoundNoLocal,
-        this.labelRoundNoEng,
-        this.roundNo,
-        this.labelPondNoLocal,
-        this.labelPondNoEng,
+        this.checkPointId,
+        this.transactionDate,
+        this.routeId,
+        this.nextRouteId,
+        this.farmCode,
+        this.farmNameLoc,
+        this.farmNameEng,
         this.pondNo,
-        this.labelStatusCarLocal,
-        this.labelStatusCarEng,
+        this.roundNo,
+        this.licensePlate,
+        this.sealNo,
+        this.sealStatus,
+        this.currentStatusId,
+        this.currentStatusName,
+        this.nextStatusId,
+        this.nextStatusName,
+        this.updateTimestamp,
+        this.status,
+        this.createdUserId,
+        this.createdDate,
+        this.lastUpdatedUserId,
+        this.lastUpdatedDate,
     });
 
-    String? labelPlateNoLocal;
-    String? labelPlateNoEng;
-    String? plateNo;
-    String? labelSealNoLocal;
-    String? labelSealNoEng;
-    String? sealNo;
-    String? labelFarmNameLocal;
-    String? labelFarmNameEng;
-    String? farmName;
-    String? labelRoundNoLocal;
-    String? labelRoundNoEng;
-    String? roundNo;
-    String? labelPondNoLocal;
-    String? labelPondNoEng;
+    String? checkPointId;
+    DateTime? transactionDate;
+    String? routeId;
+    String? nextRouteId;
+    String? farmCode;
+    String? farmNameLoc;
+    String? farmNameEng;
     String? pondNo;
-    String? labelStatusCarLocal;
-    String? labelStatusCarEng;
+    int? roundNo;
+    String? licensePlate;
+    String? sealNo;
+    bool? sealStatus;
+    String? currentStatusId;
+    String? currentStatusName;
+    String? nextStatusId;
+    String? nextStatusName;
+    dynamic updateTimestamp;
+    bool? status;
+    String? createdUserId;
+    DateTime? createdDate;
+    String? lastUpdatedUserId;
+    dynamic lastUpdatedDate;
 
     factory CarCardHistoryModel.fromJson(Map<String, dynamic> json) => CarCardHistoryModel(
-        labelPlateNoLocal: json["label_plate_no_local"],
-        labelPlateNoEng: json["label_plate_no_eng"],
-        plateNo: json["plate_no"],
-        labelSealNoLocal: json["label_seal_no_local"],
-        labelSealNoEng: json["label_seal_no_eng"],
-        sealNo: json["seal_no"],
-        labelFarmNameLocal: json["label_farm_name_local"],
-        labelFarmNameEng: json["label_farm_name_eng"],
-        farmName: json["farm_name"],
-        labelRoundNoLocal: json["label_round_no_local"],
-        labelRoundNoEng: json["label_round_no_eng"],
-        roundNo: json["round_no"],
-        labelPondNoLocal: json["label_pond_no_local"],
-        labelPondNoEng: json["label_pond_no_eng"],
-        pondNo: json["pond_no"],
-        labelStatusCarLocal: json["label_status_car_local"],
-        labelStatusCarEng: json["label_status_car_eng"],
+        checkPointId: json["checkPointId"],
+        transactionDate: json["transactionDate"] == null ? null : DateTime.parse(json["transactionDate"]),
+        routeId: json["routeId"],
+        nextRouteId: json["nextRouteId"],
+        farmCode: json["farmCode"],
+        farmNameLoc: json["farmNameLoc"],
+        farmNameEng: json["farmNameEng"],
+        pondNo: json["pondNo"],
+        roundNo: json["roundNo"],
+        licensePlate: json["licensePlate"],
+        sealNo: json["sealNo"],
+        sealStatus: json["sealStatus"],
+        currentStatusId: json["currentStatusId"],
+        currentStatusName: json["currentStatusName"],
+        nextStatusId: json["nextStatusId"],
+        nextStatusName: json["nextStatusName"],
+        updateTimestamp: json["updateTimestamp"],
+        status: json["status"],
+        createdUserId: json["createdUserId"],
+        createdDate: json["createdDate"] == null ? null : DateTime.parse(json["createdDate"]),
+        lastUpdatedUserId: json["lastUpdatedUserId"],
+        lastUpdatedDate: json["lastUpdatedDate"],
     );
 
     Map<String, dynamic> toJson() => {
-        "label_plate_no_local": labelPlateNoLocal,
-        "label_plate_no_eng": labelPlateNoEng,
-        "plate_no": plateNo,
-        "label_seal_no_local": labelSealNoLocal,
-        "label_seal_no_eng": labelSealNoEng,
-        "seal_no": sealNo,
-        "label_farm_name_local": labelFarmNameLocal,
-        "label_farm_name_eng": labelFarmNameEng,
-        "farm_name": farmName,
-        "label_round_no_local": labelRoundNoLocal,
-        "label_round_no_eng": labelRoundNoEng,
-        "round_no": roundNo,
-        "label_pond_no_local": labelPondNoLocal,
-        "label_pond_no_eng": labelPondNoEng,
-        "pond_no": pondNo,
-        "label_status_car_local": labelStatusCarLocal,
-        "label_status_car_eng": labelStatusCarEng,
+        "checkPointId": checkPointId,
+        "transactionDate": "${transactionDate!.year.toString().padLeft(4, '0')}-${transactionDate!.month.toString().padLeft(2, '0')}-${transactionDate!.day.toString().padLeft(2, '0')}",
+        "routeId": routeId,
+        "nextRouteId": nextRouteId,
+        "farmCode": farmCode,
+        "farmNameLoc": farmNameLoc,
+        "farmNameEng": farmNameEng,
+        "pondNo": pondNo,
+        "roundNo": roundNo,
+        "licensePlate": licensePlate,
+        "sealNo": sealNo,
+        "sealStatus": sealStatus,
+        "currentStatusId": currentStatusId,
+        "currentStatusName": currentStatusName,
+        "nextStatusId": nextStatusId,
+        "nextStatusName": nextStatusName,
+        "updateTimestamp": updateTimestamp,
+        "status": status,
+        "createdUserId": createdUserId,
+        "createdDate": createdDate?.toIso8601String(),
+        "lastUpdatedUserId": lastUpdatedUserId,
+        "lastUpdatedDate": lastUpdatedDate,
     };
 }

@@ -20,8 +20,9 @@ class BottonVavBar extends StatelessWidget {
      List<Widget> _buildScreens() {
       return [
       //const NotificationPage(),
+       //CarPage(),
        HomePage(),
-       const CarPage(),
+       CarPage(),
        const QRCode(),
        const NotificationPage(),
        User(),

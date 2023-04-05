@@ -177,7 +177,7 @@ class User extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 4,
-                              child: Text('อีเมล์',
+                              child: Text('email'.tr,
                               style: GoogleFonts.notoSansThai(
                                 textStyle: TextStyle(
                                   color: black,

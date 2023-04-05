@@ -28,7 +28,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     //carCardController.getListCar(context: context);
     // carCardController.addListCar();
-    homePageController.getHomePage(context: context);
     //homePageController.getHomePageTest();
 
     return Scaffold(
@@ -59,7 +58,7 @@ class HomePage extends StatelessWidget {
             child: ListView(
                 padding: EdgeInsets.only(top: 5.0.sp),
                 children: [
-                  listCarStatusBuild(context: context,list:  homePageController.homePageItem[0].cardList!)
+                  listCarStatusBuild(context: context,list:  homePageController.homePageItem[0].cardList!.obs)
                 ],
               ),
           ),
